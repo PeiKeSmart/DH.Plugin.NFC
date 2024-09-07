@@ -1,3 +1,3 @@
-﻿# Pek.Maui.Base - .Net Maui 应用程序基础库
+﻿# DH.Plugin.NFC - .Net Maui NFC库
 
-Maui 应用程序基础库  
+.Net Maui NFC库
