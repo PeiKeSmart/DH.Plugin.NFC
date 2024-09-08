@@ -81,6 +81,13 @@ public interface INFC
     /// <summary>
     /// 发送原始命令
     /// </summary>
+    /// <param name="data">指令字节数组集合</param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    byte[]? Transceive(String NfcType, IList<byte[]> data);
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
     /// <param name="data">指令字节数组</param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
     Task<byte[]?> TransceiveAsync(String NfcType, byte[] data);

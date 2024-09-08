@@ -231,6 +231,76 @@ public class NFCImplementation : INFC
     /// </summary>
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public byte[]? Transceive(String NfcType, IList<byte[]> data)
+    {
+        byte[]? result = null;
+
+        try
+        {
+            if (_currentTag == null)
+                throw new Exception(Configuration.Messages.NFCErrorMissingTag);
+
+            switch (NfcType)
+            {
+                case "NfcA":
+                    var ndef = NfcA.Get(_currentTag);
+                    if (ndef != null)
+                    {
+                        try
+                        {
+                            ndef.Connect();
+                            OnTagConnected?.Invoke(null, EventArgs.Empty);
+
+                            foreach(var item in data)
+                            {
+                                result = ndef.Transceive(item);
+                            }
+
+                            //result = ndef.Transceive(data);
+                        }
+                        catch (Android.Nfc.TagLostException tlex)
+                        {
+                            throw new Exception("Tag Lost Error: " + tlex.Message);
+                        }
+                        catch (Java.IO.IOException ioex)
+                        {
+                            throw new Exception("Tag IO Error: " + ioex.Message);
+                        }
+                        catch (Android.Nfc.FormatException fe)
+                        {
+                            throw new Exception("Tag Format Error: " + fe.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Tag Error:" + ex.Message);
+                        }
+                        finally
+                        {
+                            if (ndef.IsConnected)
+                                ndef.Close();
+
+                            OnTagDisconnected?.Invoke(null, EventArgs.Empty);
+                        }
+                    }
+                    else
+                        throw new Exception(Configuration.Messages.NFCErrorNotCompliantTag);
+
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            StopPublishingAndThrowError(ex.Message);
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
     public async Task<byte[]?> TransceiveAsync(String NfcType, byte[] data)
     {
         byte[]? result = null;

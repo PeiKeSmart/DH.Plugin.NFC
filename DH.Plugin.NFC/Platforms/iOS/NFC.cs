@@ -151,6 +151,16 @@ public class NFCImplementation : NFCTagReaderSessionDelegate, INFC
     /// </summary>
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public byte[]? Transceive(String NfcType, IList<byte[]> data)
+    {
+        return null;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
     public async Task<byte[]?> TransceiveAsync(String NfcType, byte[] data)
     {
         await Task.CompletedTask;
@@ -607,6 +617,16 @@ public class NFCImplementation_Before_iOS13 : NFCNdefReaderSessionDelegate, INFC
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
     public byte[]? Transceive(String NfcType, byte[] data)
+    {
+        return null;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public byte[]? Transceive(String NfcType, IList<byte[]> data)
     {
         return null;
     }
