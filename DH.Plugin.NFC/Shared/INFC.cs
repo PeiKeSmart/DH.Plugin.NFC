@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Plugin.NFC;
 
@@ -68,6 +69,20 @@ public interface INFC
     /// <param name="tagInfo">see <see cref="ITagInfo"/></param>
     /// <param name="makeReadOnly">make tag read-only</param>
     void PublishMessage(ITagInfo tagInfo, bool makeReadOnly = false);
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    byte[] Transceive(String NfcType, byte[] data);
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    Task<byte[]> TransceiveAsync(String NfcType, byte[] data);
 
     /// <summary>
     /// Format tag
