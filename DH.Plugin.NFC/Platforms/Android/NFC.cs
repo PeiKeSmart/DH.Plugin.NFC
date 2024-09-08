@@ -30,7 +30,7 @@ public class NFCImplementation : INFC
     bool _isListening;
     bool _isWriting;
     bool _isFormatting;
-    Tag _currentTag;
+    Tag? _currentTag;
 
     /// <summary>
     /// Current Android <see cref="Context"/>
@@ -270,12 +270,14 @@ public class NFCImplementation : INFC
     /// Handle Android OnNewIntent
     /// </summary>
     /// <param name="intent">Android <see cref="Intent"/></param>
-    internal void HandleNewIntent(Intent intent)
+    internal void HandleNewIntent(Intent? intent)
     {
         if (intent == null)
             return;
 
-        if (intent.Action == NfcAdapter.ActionTagDiscovered || intent.Action == NfcAdapter.ActionNdefDiscovered)
+        if (NfcAdapter.ActionTagDiscovered.Equals(intent.Action) ||
+            NfcAdapter.ActionTechDiscovered.Equals(intent.Action) ||
+            NfcAdapter.ActionNdefDiscovered.Equals(intent.Action))
         {
             _currentTag = intent.GetParcelableExtra(NfcAdapter.ExtraTag) as Tag;
             if (_currentTag != null)
