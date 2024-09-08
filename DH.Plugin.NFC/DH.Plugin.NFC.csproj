@@ -63,7 +63,7 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\Doc\DH.png" Link="DH.png" PackagePath="\" />
+    <Content Include="..\Doc\DH.png" Link="DH.png" PackagePath="\" />
   </ItemGroup>
 
 </Project>
