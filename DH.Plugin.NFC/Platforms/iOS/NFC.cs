@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using CoreFoundation;
 
@@ -134,6 +135,27 @@ public class NFCImplementation : NFCTagReaderSessionDelegate, INFC
     /// <param name="tagInfo">see <see cref="ITagInfo"/></param>
     /// <param name="makeReadOnly">make tag read-only</param>
     public void PublishMessage(ITagInfo tagInfo, bool makeReadOnly = false) => WriteOrClearMessage(_tag, tagInfo, false, makeReadOnly);
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public byte[] Transceive(String NfcType, byte[] data)
+    {
+        return null;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public async Task<byte[]> TransceiveAsync(String NfcType, byte[] data)
+    {
+        await Task.CompletedTask;
+        return null;
+    }
 
     /// <summary>
     /// Format tag
@@ -567,6 +589,27 @@ public class NFCImplementation_Before_iOS13 : NFCNdefReaderSessionDelegate, INFC
     /// <param name="tagInfo">see <see cref="ITagInfo"/></param>
     /// <param name="makeReadOnly">Make a tag read-only</param>
     public void PublishMessage(ITagInfo tagInfo, bool makeReadOnly = false) => WriteOrClearMessage(_tag, tagInfo, false, makeReadOnly);
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public byte[] Transceive(String NfcType, byte[] data)
+    {
+        return null;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public async Task<byte[]> TransceiveAsync(String NfcType, byte[] data)
+    {
+        await Task.CompletedTask;
+        return null;
+    }
 
     /// <summary>
     /// Format tag
