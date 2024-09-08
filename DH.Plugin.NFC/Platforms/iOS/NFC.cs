@@ -141,7 +141,7 @@ public class NFCImplementation : NFCTagReaderSessionDelegate, INFC
     /// </summary>
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
-    public byte[] Transceive(String NfcType, byte[] data)
+    public byte[]? Transceive(String NfcType, byte[] data)
     {
         return null;
     }
@@ -151,7 +151,18 @@ public class NFCImplementation : NFCTagReaderSessionDelegate, INFC
     /// </summary>
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
-    public async Task<byte[]> TransceiveAsync(String NfcType, byte[] data)
+    public async Task<byte[]?> TransceiveAsync(String NfcType, byte[] data)
+    {
+        await Task.CompletedTask;
+        return null;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public async Task<byte[]?> TransceiveAsync(String NfcType, IList<byte[]> data)
     {
         await Task.CompletedTask;
         return null;
@@ -595,7 +606,7 @@ public class NFCImplementation_Before_iOS13 : NFCNdefReaderSessionDelegate, INFC
     /// </summary>
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
-    public byte[] Transceive(String NfcType, byte[] data)
+    public byte[]? Transceive(String NfcType, byte[] data)
     {
         return null;
     }
@@ -605,7 +616,18 @@ public class NFCImplementation_Before_iOS13 : NFCNdefReaderSessionDelegate, INFC
     /// </summary>
     /// <param name="data"></param>
     /// <param name="NfcType">Nfc类型，如NfcA</param>
-    public async Task<byte[]> TransceiveAsync(String NfcType, byte[] data)
+    public async Task<byte[]?> TransceiveAsync(String NfcType, byte[] data)
+    {
+        await Task.CompletedTask;
+        return null;
+    }
+
+    /// <summary>
+    /// 发送原始命令
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="NfcType">Nfc类型，如NfcA</param>
+    public async Task<byte[]?> TransceiveAsync(String NfcType, IList<byte[]> data)
     {
         await Task.CompletedTask;
         return null;
